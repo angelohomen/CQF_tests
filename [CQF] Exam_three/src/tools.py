@@ -36,23 +36,23 @@ class MachineLearningTools:
 
         return vet
 
-    def sign(dataframe):
+    def sign(df):
         vet = []
 
-        for row in range(len(dataframe.index)):
-            if dataframe[row] > 0:
+        for row in range(len(df.index)):
+            if df[row] > 0:
                 vet.append('1')
             else:
                 vet.append('-1')
 
         return vet
 
-    def vif(dataframe):
+    def vif(df):
         scaler = StandardScaler()
-        xs = scaler.fit_transform(dataframe)
+        xs = scaler.fit_transform(df)
 
         vif = pd.DataFrame()
-        vif["Features"] = dataframe.columns
+        vif["Features"] = df.columns
         vif["VIF Factor"] = [variance_inflation_factor(xs, i) for i in range(xs.shape[1])]
         
         return vif
